@@ -1,0 +1,11 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+{% include 'dashboard/nav_bar.html' %}
+
+<div style="background-color: antiquewhite;">
+    
+    Hello {{request.user.first_name}}
+</div>
+
+{% endblock %}
