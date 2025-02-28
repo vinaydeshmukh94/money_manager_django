@@ -3,9 +3,57 @@
 {% block content %}
 {% include 'dashboard/nav_bar.html' %}
 
-<div style="background-color: antiquewhite;">
-    
-    Hello {{request.user.first_name}}
+
+
+<div class="container" style="background-color: black; border-radius: 8px; text-align: center;
+max-width: 70%; text-decoration-color: azure; color:rgb(185, 192, 195);   
+width: 100%;">
+    <h1>Welcome {{request.user.first_name}} !!</h1>
+    <p>This container has a dark background color and a white text, and some extra padding and margins.</p>
+
+    <h2><a href="/finance/add_category">Add Category</a></h2>
+    <h2><a href="/finance/add_transaction">Add Transaction</a></h2>
+
+    {% if my_transactions %}
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the transactions -->
+            {% for transaction in my_transactions %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.transaction_type }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.category.name }}</td>
+                <td>{{ transaction.subcategory.name }}</td>
+                <td>{{ transaction.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No transactions found.</p>
+    {% endif %}
+
+    <br><br>
+
+    <h2>Expenses by Category</h2>
+    <!-- Display the pie chart -->
+    <img src="data:image/png;base64,{{ pie_chart }}" alt="Expenses by Category Pie Chart">
+
 </div>
+
+
 
 {% endblock %}

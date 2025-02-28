@@ -1,0 +1,181 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+{% include 'dashboard/nav_bar.html' %}
+
+
+<style>
+    /* Basic styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+
+    label {
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Style the select element */
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        background-color: #ffffff;
+        font-size: 16px;
+        color: #333;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* Hover and focus effects */
+    select:hover,
+    select:focus {
+        border-color: #0056b3;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Style the options */
+    option {
+        padding: 10px;
+        background-color: #ffffff;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+
+    option:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+</style>
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Manage Category</p>
+                                <div class="container"
+                                    style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); padding: 20px; max-width: 90%;">
+                                    <form class="mx-1 mx-md-4" method="POST"
+                                        action="{% url 'add_category_subcategory' %}">
+                                        {% csrf_token %}
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                                <input type="text" name="category_name" id="category_name"
+                                                    class="form-control" />
+                                                <label class="form-label" for="form3Example3c">Category Name</label>
+                                            </div>
+                                        </div>
+
+                                        {% if messages %}
+                                        <ul class="messages">
+                                            {% for message in messages %}
+                                            {% if message.level_tag == 'info' and message.tags == 'category info' %}
+                                            <div class="alert alert-primary" role="alert">
+                                                {{message}}
+                                            </div>
+                                            {% endif %}
+                                            {% if message.level_tag == 'error' and message.tags == 'category error' %}
+                                            <div class="alert alert-danger" role="alert">
+                                                {{message}}
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+
+
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                                class="btn btn-primary btn-lg" name="add_category">Add Category</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <br><br>
+
+
+                                <div class="container"
+                                    style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); padding: 20px; max-width: 90%;">
+                                    <form class="mx-1 mx-md-4" method="POST"
+                                        action="{% url 'add_category_subcategory' %}">
+                                        {% csrf_token %}
+
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <select class="selectpicker" id="category" name="category" required>
+                                                <option value="" disabled selected>Select a category</option>
+                                                {% for category in categories %}
+                                                <option value="{{ category.id }}">{{ category.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                                <input type="text" name="subcategory_name" id="subcategory_name"
+                                                    class="form-control" />
+                                                <label class="form-label" for="form3Example3c"
+                                                    name="add_subcategory">Sub-Category Name</label>
+                                            </div>
+                                        </div>
+
+                                        {% if messages %}
+                                        <ul class="messages">
+                                            {% for message in messages %}
+                                            {% if message.level_tag == 'info' and message.tags == 'subcategory info'%}
+                                            <div class="alert alert-primary" role="alert">
+                                                {{message}}
+                                            </div>
+                                            {% endif %}
+                                            {% if message.level_tag == 'error' and message.tags == 'subcategory error'%}
+                                            <div class="alert alert-danger" role="alert">
+                                                {{message}}
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+
+
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                                class="btn btn-primary btn-lg" name="add_subcategory">Add
+                                                Sub-Category</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                    class="img-fluid" alt="Sample image"> -->
+                                <img src="https://due.com/wp-content/uploads/2017/08/Consultant.jpg.webp"
+                                    class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
