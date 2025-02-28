@@ -28,6 +28,3 @@ To run this application, you'll need:
 - Python 3.x
 - Django
 - Matplotlib
-
-## Installation
-- 
