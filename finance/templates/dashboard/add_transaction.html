@@ -49,27 +49,34 @@
     option:hover {
         background-color: #f1f1f1;
     }
+
     .input-group {
         display: flex;
-        align-items: center;  /* Align label and input vertically */
-        margin-bottom: 10px;   /* Add space between input fields */
+        align-items: center;
+        /* Align label and input vertically */
+        margin-bottom: 10px;
+        /* Add space between input fields */
     }
 
     .input-group label {
         font-size: 16px;
         font-weight: bold;
-        margin-right: 15px;  /* Add some space between label and input */
-        width: 100px;        /* Fix label width to maintain consistent layout */
+        margin-right: 15px;
+        /* Add some space between label and input */
+        width: 100px;
+        /* Fix label width to maintain consistent layout */
     }
 
     .input-group input {
-        background-color: #ffffff;  /* White background */
+        background-color: #ffffff;
+        /* White background */
         font-size: 16px;
         padding: 10px;
         margin: 0;
         border: 2px solid #007bff;
         border-radius: 4px;
-        width: 200px;              /* Set width for the input fields */
+        width: 200px;
+        /* Set width for the input fields */
         box-sizing: border-box;
     }
 
@@ -79,7 +86,6 @@
         box-shadow: 0 0 5px rgba(8, 126, 245, 0.5);
         border-color: #393a3a;
     }
-
 </style>
 
 </style>
@@ -95,8 +101,7 @@
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add Transaction</p>
                                 <div class="container"
                                     style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); padding: 20px; max-width: 90%;">
-                                    <form class="mx-1 mx-md-4" method="POST"
-                                        action="{% url 'add_transaction' %}">
+                                    <form class="mx-1 mx-md-4" method="POST" action="{% url 'add_transaction' %}">
                                         {% csrf_token %}
 
                                         <select id="transaction_type" name="transaction_type" required>
@@ -106,8 +111,8 @@
                                         <br>
                                         <br>
                                         <div class="input-group">
-                                        <label for="amount">Amount:</label>
-                                        <input type="number" id="amount" name="amount" step="0.01" required><br>
+                                            <label for="amount">Amount:</label>
+                                            <input type="number" id="amount" name="amount" step="0.01" required><br>
                                         </div>
                                         <br>
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -128,24 +133,24 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        
+
                                         <br><br>
                                         <!-- Inside the form, add the Date field -->
                                         <div class="input-group">
-                                    <label for="date">Transaction Date:</label>
-                                    <input type="date" id="date" name="date" required><br>
-                                            </div>
+                                            <label for="date">Transaction Date:</label>
+                                            <input type="date" id="date" name="date" required><br>
+                                        </div>
 
                                         <br>
                                         {% if messages %}
                                         <ul class="messages">
                                             {% for message in messages %}
-                                            {% if message.level_tag == 'info' and message.tags == 'category info' %}
+                                            {% if message.level_tag == 'info' %}
                                             <div class="alert alert-primary" role="alert">
                                                 {{message}}
                                             </div>
                                             {% endif %}
-                                            {% if message.level_tag == 'error' and message.tags == 'category error' %}
+                                            {% if message.level_tag == 'error' %}
                                             <div class="alert alert-danger" role="alert">
                                                 {{message}}
                                             </div>
@@ -157,7 +162,8 @@
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                                                class="btn btn-primary btn-lg" name="add_category">Add Category</button>
+                                                class="btn btn-primary btn-lg" name="add_category">Add
+                                                Transaction</button>
                                         </div>
 
                                     </form>

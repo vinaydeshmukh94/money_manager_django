@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -156,16 +156,23 @@ def add_transaction(request):
         subcategory = (
             Subcategory.objects.get(id=subcategory_id) if subcategory_id else None
         )
+        try:
+            Transaction.objects.create(
+                transaction_type=transaction_type,
+                amount=amount,
+                category=category,
+                subcategory=subcategory,
+                user=request.user,
+                description=description,
+                date=date,
+            )
+            messages.info(
+                request,
+                f"Transcation for amount {amount} - added !!",
+            )
+        except Exception as e:
+            messages.error(request, str(e))
 
-        Transaction.objects.create(
-            transaction_type=transaction_type,
-            amount=amount,
-            category=category,
-            subcategory=subcategory,
-            user=request.user,
-            description=description,
-            date=date,
-        )
         return render(request, "dashboard/add_transaction.html")
 
     categories = Category.objects.filter(user=request.user)
@@ -176,6 +183,18 @@ def add_transaction(request):
         "dashboard/add_transaction.html",
         {"categories": categories, "subcategories": subcategories},
     )
+
+
+@login_required
+def delete_transaction(request, transaction_id):
+    # Fetch the transaction by its ID
+    transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
+
+    # Delete the transaction
+    transaction.delete()
+
+    # Redirect back to the dashboard
+    return redirect("/finance/dashboard")
 
 
 def logout_view(request):
