@@ -1,7 +1,18 @@
 # Expense Tracker Web Application
 
-![{D3B7E391-B3F0-4BA1-9A03-A745875B8211}](https://github.com/user-attachments/assets/a8d67dfa-d6a7-4ae8-957e-3af011a5a02b)
+# ScreenShots
 
+### User Profile
+![{8EF9625E-8869-468D-8DCE-2482D89C1A05}](https://github.com/user-attachments/assets/bdc8f54e-f37b-4c4f-984c-83dfcc870b4b)
+
+### Login
+![{6093F14F-6598-40F4-A2E9-EAC8E0C6BB98}](https://github.com/user-attachments/assets/18de517a-738f-4b09-beca-40f5b5e1d8de)
+
+### Sign Up
+![{D671E42E-B14E-486E-B646-2761D47EA3FC}](https://github.com/user-attachments/assets/98b04821-6f54-4096-9780-0c44b2d724ac)
+
+### Add Transaction
+![{7CB16D4D-5ECF-4B25-AA37-8F218280DBCD}](https://github.com/user-attachments/assets/d230dfb2-fe6c-4531-8cec-33455ee5c5fb)
 
 ## Overview
 This web application allows users to track their expenses and income. Users can:
