@@ -3,7 +3,9 @@
 # ScreenShots
 
 ### User Profile
-![{8EF9625E-8869-468D-8DCE-2482D89C1A05}](https://github.com/user-attachments/assets/bdc8f54e-f37b-4c4f-984c-83dfcc870b4b)
+![{428996F3-20E6-433C-9E16-05DC6BAB14FE}](https://github.com/user-attachments/assets/6806cbf1-e0cc-4fb6-8ec1-40fb615d0563)
+![{EC6B4C2F-3BFE-4035-8DF4-8E3CFCA169A2}](https://github.com/user-attachments/assets/1c73e392-46ee-478b-9920-61d972e554c7)
+
 
 ### Login
 ![{6093F14F-6598-40F4-A2E9-EAC8E0C6BB98}](https://github.com/user-attachments/assets/18de517a-738f-4b09-beca-40f5b5e1d8de)
